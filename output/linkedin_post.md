@@ -4,7 +4,7 @@
 
 Bugün GitHub üzerindeki çalışmalarımda ilerleme kaydettim.
 
-• linkedin-agent: fix: support authenticated repository listing; fix: use valid private activity secret name; feat: track daily GitHub activity
+• linkedin-agent: chore: update bilingual LinkedIn draft; feat: generate bilingual LinkedIn drafts; fix: support authenticated repository listing
 
 Bu çalışmalar sayesinde kod yazma, problem çözme ve projelerimi düzenli
 olarak geliştirme pratiği yapıyorum. Öğrenmeye ve üretmeye devam ediyorum. 💪
@@ -19,7 +19,7 @@ olarak geliştirme pratiği yapıyorum. Öğrenmeye ve üretmeye devam ediyorum.
 
 I made progress on my projects on GitHub today.
 
-• linkedin-agent: feat: track daily GitHub activity; feat: generate first agent project announcement; fix: prepare personal LinkedIn drafts
+• linkedin-agent: chore: update bilingual LinkedIn draft; feat: generate bilingual LinkedIn drafts; fix: support authenticated repository listing
 
 These projects are helping me practice coding, problem-solving, and consistent
 development. I am continuing to learn and build. 💪
