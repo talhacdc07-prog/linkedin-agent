@@ -22,6 +22,7 @@ jobs:
 
       - name: Analyze repository
         env:
+          GITHUB_TOKEN: ${{ secrets.GH_READ_TOKEN }}
           GITHUB_OWNER: talhacdc07-prog
         run: python agents/github_activity.py
 

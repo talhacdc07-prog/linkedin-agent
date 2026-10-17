@@ -21,8 +21,9 @@ linkedin-agent/
 ## Günlük çalışma
 
 GitHub Actions workflow'u her gün 18:00 UTC'de çalışır. `GITHUB_OWNER`
-değeri workflow içinde ayarlanmıştır ve herkese açık repository'leri tarar.
-Private repository'ler için ileride bir GitHub read-only token'ı eklenebilir.
+değeri workflow içinde ayarlanmıştır. Public repository'lere ek olarak private
+repository'leri tarayabilmesi için GitHub repository secrets bölümünde
+`GH_READ_TOKEN` adlı, yalnızca okuma yetkili bir GitHub token'ı bulunmalıdır.
 O gün hiçbir repository'de commit yoksa workflow başarılı şekilde tamamlanır
 ama LinkedIn taslağı oluşturmaz.
 
@@ -36,6 +37,20 @@ Get-Content output/linkedin_post.md
 
 İlk komut `output/github_activity.json`, ikinci komut ise yalnızca aktivite
 varsa `output/linkedin_post.md` dosyasını oluşturur.
+
+### Private repository erişimi
+
+GitHub'da **Settings > Developer settings > Personal access tokens** bölümünden
+fine-grained bir token oluşturun. Token'ı gerekli private repository'lere
+verin ve en azından **Contents: Read-only** ile **Metadata: Read-only**
+izinlerini seçin. Token'ı repository secrets bölümünde şu adla kaydedin:
+
+```text
+GH_READ_TOKEN
+```
+
+Token'ı koda veya workflow dosyasına yazmayın. Token eklenmezse public
+repository'ler yine taranabilir, private repository'ler taranamaz.
 
 ## GitHub Actions
 
