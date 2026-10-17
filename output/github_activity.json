@@ -7,6 +7,10 @@
       "description": "",
       "commits": [
         {
+          "message": "feat: add project summary to workflow",
+          "sha": "ce94e5303374013a746043094fe697b2923bf13f"
+        },
+        {
           "message": "chore: update bilingual LinkedIn draft",
           "sha": "50de0a44ead6b2e4a04ab7e58bad34403878b314"
         },
