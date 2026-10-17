@@ -1,0 +1,22 @@
+{
+  "repository": "linkedin-agent",
+  "file_count": 4,
+  "total_bytes": 5466,
+  "top_languages": [
+    [
+      "Python",
+      2
+    ]
+  ],
+  "extensions": {
+    ".md": 1,
+    ".py": 2,
+    "[no extension]": 1
+  },
+  "sample_files": [
+    ".gitignore",
+    "README.md",
+    "agents/github_analyzer.py",
+    "agents/linkedin_writer.py"
+  ]
+}

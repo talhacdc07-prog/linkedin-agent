@@ -1,0 +1,49 @@
+name: LinkedIn Agent
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "output/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Analyze repository
+        run: python agents/github_analyzer.py
+
+      - name: Generate LinkedIn post
+        run: python agents/linkedin_writer.py
+
+      - name: Publish to LinkedIn
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION }}
+        run: python agents/linkedin_publisher.py
+
+      - name: Upload generated content
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkedin-content
+          path: output/
+
+      - name: Save generated content
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: generate LinkedIn project update"
+          file_pattern: output/*
