@@ -36,7 +36,12 @@ def github_get(path: str, token: str | None) -> object:
 
 
 def collect_activity(token: str, owner: str, since: datetime) -> dict[str, object]:
-    repos = github_get(f"/users/{owner}/repos?per_page=100&type=owner&sort=pushed", token)
+    repo_path = (
+        "/user/repos?per_page=100&affiliation=owner&sort=pushed&direction=desc"
+        if token
+        else f"/users/{owner}/repos?per_page=100&type=owner&sort=pushed"
+    )
+    repos = github_get(repo_path, token)
     if not isinstance(repos, list):
         raise RuntimeError("GitHub returned an invalid repository list")
 
