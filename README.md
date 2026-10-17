@@ -9,8 +9,7 @@ paylaşmaya hazır bir gönderi taslağı üretir.
 linkedin-agent/
 ├── agents/
 │   ├── github_analyzer.py
-│   ├── linkedin_writer.py
-│   └── linkedin_publisher.py
+│   └── linkedin_writer.py
 ├── output/
 └── .github/
     └── workflows/
@@ -34,28 +33,19 @@ Get-Content output/linkedin_post.md
 
 Workflow `main` branch'ine yapılan her push'ta veya GitHub Actions ekranındaki
 **Run workflow** seçeneğiyle çalışır. Önce repository analiz edilir, sonra
-LinkedIn gönderisi üretilir ve resmi LinkedIn Posts API ile otomatik olarak
-yayınlanır.
+LinkedIn gönderisi üretilir ve Actions özetinde gösterilir. Özet içindeki
+bağlantıyla mevcut kişisel LinkedIn hesabının paylaşım ekranını açıp gönderiyi
+onaylayarak yayınlarsınız.
 
-## LinkedIn kurulumu
+## Kullanım
 
-1. LinkedIn Developer Portal'da bir uygulama oluşturun ve uygulamaya
-   **Share on LinkedIn** ürününü ekleyin.
-2. OAuth 2.0 ile bir kullanıcı erişim token'ı alın. Token'ın en azından
-   `w_member_social` yetkisine sahip olması gerekir.
-3. LinkedIn profil URN'inizi `urn:li:person:...` biçiminde belirleyin.
-4. GitHub repository ayarlarında **Settings > Secrets and variables >
-   Actions** bölümünde şu repository secrets değerlerini ekleyin:
+1. GitHub'a push yapın veya Actions içinden workflow'u manuel çalıştırın.
+2. **Actions > LinkedIn Agent** içinden tamamlanan çalışmayı açın.
+3. Gönderi taslağını **Summary** bölümünden kopyalayın.
+4. Aynı bölümdeki LinkedIn bağlantısını açın, metni yapıştırın ve **Post**
+   düğmesine basın.
 
-   - `LINKEDIN_ACCESS_TOKEN`: LinkedIn OAuth access token
-   - `LINKEDIN_AUTHOR_URN`: Gönderinin yayınlanacağı profil URN'i
-
-   İsteğe bağlı repository variable:
-
-   - `LINKEDIN_VERSION`: API sürümü; varsayılan `202601`
-
-Token'ı dosyaya, workflow metnine veya commit'e yazmayın. Token süresi
-dolduğunda yeni OAuth token alıp secret'ı güncelleyin.
-
-Workflow başarısız olursa LinkedIn API'nin HTTP hata mesajını Actions log'unda
-açıkça gösterir; eksik secret durumunda da yayınlama adımı hata ile durur.
+Bu akış yeni LinkedIn hesabı veya şirket sayfası gerektirmez. GitHub Actions
+sunucusu sizin bilgisayarınızın tarayıcısını açamayacağı için son paylaşım
+onayı mevcut kişisel hesabınızda manuel verilir. LinkedIn access token,
+şifre veya Developer uygulaması eklemeniz gerekmez.
