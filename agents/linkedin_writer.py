@@ -14,22 +14,25 @@ def create_post(analysis: dict[str, Any]) -> str:
     languages = [name for name, _ in analysis.get("top_languages", [])[:3]]
     language_text = ", ".join(languages) if languages else "çeşitli teknolojiler"
 
-    return f"""🚀 Yeni proje güncellemesi: {repository}
+    return f"""🚀 Agent'larla geliştirdiğim ilk GitHub projemi yayınladım!
 
-Bugün GitHub üzerindeki projemi geliştirmeye ve daha düzenli bir geliştirme
-akışı kurmaya devam ettim.
+Bugün GitHub üzerinde {repository} adlı projemi oluşturdum ve bu projeyi
+agent'larla birlikte geliştirerek çalışan bir otomasyon akışı kurdum.
 
 📊 Proje özeti:
 • {file_count} dosya analiz edildi
-• Kullanılan teknolojiler: {language_text}
-• Repository analizi ve LinkedIn içerik üretimi otomatikleştirildi
+• Kullanılan teknoloji: {language_text}
+• GitHub repository analizi otomatikleştirildi
+• Proje güncellemesinden LinkedIn gönderisi üretme akışı oluşturuldu
 
-Bu çalışma sayesinde kod değişikliklerini daha anlaşılır şekilde paylaşmayı,
-öğrenme sürecimi kayıt altına almayı ve sürekli geliştirmeyi hedefliyorum.
+Bu benim agent'ları kullanarak hazırladığım ilk proje. Kod yazma, dosya yapısını
+oluşturma, GitHub Actions workflow'unu hazırlama ve içerik üretme süreçlerinde
+agent'lardan faydalandım.
 
-Öğrenmeye ve üretmeye devam ediyorum. 💪
+Yazılım geliştirirken yapay zekâ destekli araçları daha bilinçli kullanmayı ve
+üretmeye devam etmeyi öğreniyorum. 💪
 
-#Python #GitHub #YazılımGeliştirme #Automation #LearningInPublic
+#Python #GitHub #YazılımGeliştirme #AI #Automation #LearningInPublic
 """
 
 
