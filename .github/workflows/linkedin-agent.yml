@@ -1,11 +1,8 @@
 name: LinkedIn Agent
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - "output/**"
+  schedule:
+    - cron: "0 18 * * *"
   workflow_dispatch:
 
 permissions:
@@ -24,12 +21,19 @@ jobs:
           python-version: "3.12"
 
       - name: Analyze repository
-        run: python agents/github_analyzer.py
+        env:
+          GITHUB_OWNER: talhacdc07-prog
+        run: python agents/github_activity.py
 
-      - name: Generate LinkedIn post
+      - name: Clear previous draft
+        run: Remove-Item output\linkedin_post.md -ErrorAction SilentlyContinue
+        shell: pwsh
+
+      - name: Generate LinkedIn post content
         run: python agents/linkedin_writer.py
 
       - name: Prepare LinkedIn draft
+        if: hashFiles('output/linkedin_post.md') != ''
         run: |
           {
             echo "## LinkedIn gönderi taslağı"
@@ -41,6 +45,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload generated content
+        if: hashFiles('output/linkedin_post.md') != ''
         uses: actions/upload-artifact@v4
         with:
           name: linkedin-content

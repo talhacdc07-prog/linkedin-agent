@@ -1,13 +1,15 @@
 # LinkedIn Agent
 
-Bu proje GitHub repository'sini analiz eder ve analiz sonucundan LinkedIn'de
-paylaşmaya hazır bir gönderi taslağı üretir.
+Bu proje GitHub hesabındaki projeleri her gün kontrol eder. O gün commit veya
+proje ilerlemesi varsa bunun üzerinden LinkedIn'de paylaşmaya hazır tek bir
+gönderi taslağı üretir; hiç ilerleme yoksa gönderi üretmez.
 
 ## Klasör yapısı
 
 ```text
 linkedin-agent/
 ├── agents/
+│   ├── github_activity.py
 │   ├── github_analyzer.py
 │   └── linkedin_writer.py
 ├── output/
@@ -16,18 +18,24 @@ linkedin-agent/
         └── linkedin-agent.yml
 ```
 
+## Günlük çalışma
+
+GitHub Actions workflow'u her gün 18:00 UTC'de çalışır. `GITHUB_OWNER`
+değeri workflow içinde ayarlanmıştır ve herkese açık repository'leri tarar.
+Private repository'ler için ileride bir GitHub read-only token'ı eklenebilir.
+O gün hiçbir repository'de commit yoksa workflow başarılı şekilde tamamlanır
+ama LinkedIn taslağı oluşturmaz.
+
 ## Yerel çalıştırma
 
-Repository kökünde:
-
 ```powershell
-python agents/github_analyzer.py
+python agents/github_activity.py
 python agents/linkedin_writer.py
 Get-Content output/linkedin_post.md
 ```
 
-İlk komut `output/repository_analysis.json`, ikinci komut ise
-`output/linkedin_post.md` dosyasını oluşturur.
+İlk komut `output/github_activity.json`, ikinci komut ise yalnızca aktivite
+varsa `output/linkedin_post.md` dosyasını oluşturur.
 
 ## GitHub Actions
 

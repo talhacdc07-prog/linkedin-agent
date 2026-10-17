@@ -8,6 +8,26 @@ from pathlib import Path
 from typing import Any
 
 
+def create_activity_post(activity: dict[str, Any]) -> str:
+    projects = activity.get("projects", [])
+    details = []
+    for project in projects:
+        messages = [commit["message"] for commit in project.get("commits", [])]
+        details.append(f"• {project['name']}: " + "; ".join(messages[:3]))
+    project_text = "\n".join(details)
+    return f"""🚀 Bugünkü yazılım geliştirme günlüğüm
+
+Bugün GitHub üzerindeki çalışmalarımda ilerleme kaydettim.
+
+{project_text}
+
+Bu çalışmalar sayesinde kod yazma, problem çözme ve projelerimi düzenli
+olarak geliştirme pratiği yapıyorum. Öğrenmeye ve üretmeye devam ediyorum. 💪
+
+#GitHub #YazılımGeliştirme #Python #AI #LearningInPublic
+"""
+
+
 def create_post(analysis: dict[str, Any]) -> str:
     repository = analysis.get("repository", "projem")
     file_count = analysis.get("file_count", 0)
@@ -37,6 +57,18 @@ Yazılım geliştirirken yapay zekâ destekli araçları daha bilinçli kullanma
 
 
 def main() -> None:
+    activity_path = Path(os.environ.get("ACTIVITY_INPUT", "output/github_activity.json"))
+    if activity_path.is_file():
+        activity = json.loads(activity_path.read_text(encoding="utf-8"))
+        if not activity.get("has_activity"):
+            print("No GitHub activity found; no LinkedIn post generated.")
+            return
+        output_path = Path(os.environ.get("POST_OUTPUT", "output/linkedin_post.md"))
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(create_activity_post(activity), encoding="utf-8")
+        print(f"LinkedIn post written to: {output_path}")
+        return
+
     analysis_path = Path(os.environ.get("ANALYSIS_INPUT", "output/repository_analysis.json"))
     output_path = Path(os.environ.get("POST_OUTPUT", "output/linkedin_post.md"))
     if not analysis_path.is_file():
