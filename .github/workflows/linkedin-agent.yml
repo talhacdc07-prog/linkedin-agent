@@ -33,6 +33,15 @@ jobs:
       - name: Generate LinkedIn post content
         run: python agents/linkedin_writer.py
 
+      - name: Prepare project summary
+        run: |
+          {
+            echo "## Proje özeti"
+            echo ""
+            python -c "import json; data=json.load(open('output/github_activity.json', encoding='utf-8')); projects=data.get('projects', []); print('Bugünkü aktivite bulunan projeler: ' + str(len(projects))); [print(f\"### {project['name']}\n{project.get('description') or 'Açıklama eklenmemiş.'}\n\nSon commitler:\n\" + ''.join(f\"- {commit['message']}\\n\" for commit in project.get('commits', [])[:3])) for project in projects]"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Prepare LinkedIn draft
         if: hashFiles('output/linkedin_post.md') != ''
         run: |

@@ -64,8 +64,10 @@ onaylayarak yayınlarsınız.
 
 1. GitHub'a push yapın veya Actions içinden workflow'u manuel çalıştırın.
 2. **Actions > LinkedIn Agent** içinden tamamlanan çalışmayı açın.
-3. Gönderi taslağını **Summary** bölümünden kopyalayın.
-4. Aynı bölümdeki LinkedIn bağlantısını açın, metni yapıştırın ve **Post**
+3. **Proje özeti** bölümünden aktivite bulunan projeleri ve son commitleri
+   kontrol edin.
+4. Gönderi taslağını **Summary** bölümünden kopyalayın.
+5. Aynı bölümdeki LinkedIn bağlantısını açın, metni yapıştırın ve **Post**
    düğmesine basın.
 
 Bu akış yeni LinkedIn hesabı veya şirket sayfası gerektirmez. GitHub Actions
