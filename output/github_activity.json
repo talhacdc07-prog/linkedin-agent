@@ -7,6 +7,14 @@
       "description": "",
       "commits": [
         {
+          "message": "fix: support authenticated repository listing",
+          "sha": "4fc84c163a64057906d1d3b0c4a4b262806a4bde"
+        },
+        {
+          "message": "fix: use valid private activity secret name",
+          "sha": "9cecf0917fc5f9edd47b97d02fe7d38fc2463e84"
+        },
+        {
           "message": "feat: track daily GitHub activity",
           "sha": "a386ce233e932baa372f86431bb3b47b24361c58"
         },

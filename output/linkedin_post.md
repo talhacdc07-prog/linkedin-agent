@@ -2,7 +2,7 @@
 
 Bugün GitHub üzerindeki çalışmalarımda ilerleme kaydettim.
 
-• linkedin-agent: feat: track daily GitHub activity; feat: generate first agent project announcement; fix: prepare personal LinkedIn drafts
+• linkedin-agent: fix: support authenticated repository listing; fix: use valid private activity secret name; feat: track daily GitHub activity
 
 Bu çalışmalar sayesinde kod yazma, problem çözme ve projelerimi düzenli
 olarak geliştirme pratiği yapıyorum. Öğrenmeye ve üretmeye devam ediyorum. 💪
