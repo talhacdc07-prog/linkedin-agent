@@ -10,21 +10,42 @@ from typing import Any
 
 def create_activity_post(activity: dict[str, Any]) -> str:
     projects = activity.get("projects", [])
-    details = []
+    turkish_details = []
+    english_details = []
     for project in projects:
         messages = [commit["message"] for commit in project.get("commits", [])]
-        details.append(f"• {project['name']}: " + "; ".join(messages[:3]))
-    project_text = "\n".join(details)
-    return f"""🚀 Bugünkü yazılım geliştirme günlüğüm
+        summary = "; ".join(messages[:3])
+        turkish_details.append(f"• {project['name']}: {summary}")
+        english_details.append(f"• {project['name']}: {summary}")
+    turkish_projects = "\n".join(turkish_details)
+    english_projects = "\n".join(english_details)
+    return f"""🇹🇷 TÜRKÇE
+
+🚀 Bugünkü yazılım geliştirme günlüğüm
 
 Bugün GitHub üzerindeki çalışmalarımda ilerleme kaydettim.
 
-{project_text}
+{turkish_projects}
 
 Bu çalışmalar sayesinde kod yazma, problem çözme ve projelerimi düzenli
 olarak geliştirme pratiği yapıyorum. Öğrenmeye ve üretmeye devam ediyorum. 💪
 
 #GitHub #YazılımGeliştirme #Python #AI #LearningInPublic
+
+---
+
+🇬🇧 ENGLISH
+
+🚀 Today's software development update
+
+I made progress on my projects on GitHub today.
+
+{english_projects}
+
+These projects are helping me practice coding, problem-solving, and consistent
+development. I am continuing to learn and build. 💪
+
+#GitHub #SoftwareDevelopment #Python #AI #LearningInPublic
 """
 
 
