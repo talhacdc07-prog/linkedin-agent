@@ -1,49 +1,6 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-18",
   "owner": "talhacdc07-prog",
-  "projects": [
-    {
-      "name": "linkedin-agent",
-      "description": "",
-      "commits": [
-        {
-          "message": "feat: add project summary to workflow",
-          "sha": "ce94e5303374013a746043094fe697b2923bf13f"
-        },
-        {
-          "message": "chore: update bilingual LinkedIn draft",
-          "sha": "50de0a44ead6b2e4a04ab7e58bad34403878b314"
-        },
-        {
-          "message": "feat: generate bilingual LinkedIn drafts",
-          "sha": "291006f236c67392eddd7de4910508379af28304"
-        },
-        {
-          "message": "fix: support authenticated repository listing",
-          "sha": "4fc84c163a64057906d1d3b0c4a4b262806a4bde"
-        },
-        {
-          "message": "fix: use valid private activity secret name",
-          "sha": "9cecf0917fc5f9edd47b97d02fe7d38fc2463e84"
-        },
-        {
-          "message": "feat: track daily GitHub activity",
-          "sha": "a386ce233e932baa372f86431bb3b47b24361c58"
-        },
-        {
-          "message": "feat: generate first agent project announcement",
-          "sha": "99543709d3443c1673a2ce14497b62b41e0d2317"
-        },
-        {
-          "message": "fix: prepare personal LinkedIn drafts",
-          "sha": "2b10a11f09a88e63aaa7ef12a747d0994f80c1fd"
-        },
-        {
-          "message": "feat: add LinkedIn automation agent",
-          "sha": "cd684909027e3ce92495797ea081be485ec678ca"
-        }
-      ]
-    }
-  ],
-  "has_activity": true
+  "projects": [],
+  "has_activity": false
 }
